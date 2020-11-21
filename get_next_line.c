@@ -6,7 +6,7 @@
 /*   By: romain <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 06:34:11 by romain            #+#    #+#             */
-/*   Updated: 2020/11/21 18:30:24 by rsanchez         ###   ########.fr       */
+/*   Updated: 2020/11/21 18:50:57 by rsanchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int		extractline(char **buf, char **line, size_t nl, size_t len)
 
 int		get_next_line(int fd, char **line)
 {
-	static char	*permbuf[2000];
+	static char	*permbuf[OPEN_MAX];
 	char		tmpbuf[BUFFER_SIZE + 1];
 	size_t		len;
 	size_t		nl;

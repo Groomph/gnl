@@ -6,7 +6,7 @@
 /*   By: romain <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 07:16:41 by romain            #+#    #+#             */
-/*   Updated: 2020/11/12 10:39:09 by romain           ###   ########.fr       */
+/*   Updated: 2020/11/21 18:51:48 by rsanchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <limits.h>
 
 int		get_next_line(int fd, char **line);
 char	*my_substr_free(char *str, size_t start, size_t len, int freestr);
