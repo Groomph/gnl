@@ -6,7 +6,7 @@
 /*   By: romain <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 06:34:11 by romain            #+#    #+#             */
-/*   Updated: 2020/11/12 10:38:51 by romain           ###   ########.fr       */
+/*   Updated: 2020/11/21 18:30:24 by rsanchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@ int		extractline(char **buf, char **line, size_t nl, size_t len)
 {
 	if (len == 0)
 	{
+		if (!*buf)
+		{
+			*buf = malloc(sizeof(char));
+			*buf[0] = '\0';
+		}
 		*line = *buf;
 		*buf = NULL;
 		return (0);
@@ -48,7 +53,7 @@ int		get_next_line(int fd, char **line)
 	size_t		len;
 	size_t		nl;
 
-	if (fd < 0 || read(fd, 0, 0) < 0 || !line || BUFFER_SIZE < 1)
+	if (fd < 0 || read(fd, tmpbuf, 0) < 0 || !line || BUFFER_SIZE < 1)
 		return (-1);
 	len = 1;
 	while ((nl = isnl(permbuf[fd])) == 0 &&
