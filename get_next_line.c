@@ -6,7 +6,7 @@
 /*   By: romain <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 06:34:11 by romain            #+#    #+#             */
-/*   Updated: 2020/11/21 18:50:57 by rsanchez         ###   ########.fr       */
+/*   Updated: 2020/11/21 20:18:17 by rsanchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ int		extractline(char **buf, char **line, size_t nl, size_t len)
 	{
 		if (!*buf)
 		{
-			*buf = malloc(sizeof(char));
+			if (!(*buf = malloc(sizeof(char))))
+				return (-1);
 			*buf[0] = '\0';
 		}
 		*line = *buf;
