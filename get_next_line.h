@@ -6,7 +6,7 @@
 /*   By: romain <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 07:16:41 by romain            #+#    #+#             */
-/*   Updated: 2020/12/14 20:54:03 by rsanchez         ###   ########.fr       */
+/*   Updated: 2020/12/14 21:21:17 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # endif
 
 int		get_next_line(int fd, char **line);
-char	*my_substr_free(char *str, size_t start, size_t len, int freestr);
+char	*substr_free(char *str, size_t start, size_t len, int freestr);
 char	*join_free(char *str1, char *str2, int freestr1, int freestr2);
 
 #endif
