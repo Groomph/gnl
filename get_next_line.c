@@ -6,7 +6,7 @@
 /*   By: romain <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 06:34:11 by romain            #+#    #+#             */
-/*   Updated: 2020/11/21 22:26:34 by rsanchez         ###   ########.fr       */
+/*   Updated: 2020/12/14 20:40:29 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,19 @@ int		extractline(char **buf, char **line, size_t nl, size_t len)
 {
 	if (len == 0)
 	{
-		*line = *buf;
-		*buf = NULL;
+		if (*buf)
+		{
+			*line = *buf;
+			*buf = NULL;
+			return (0);
+		}
+		if (!(*line = malloc(1)))
+			return (-1);
+		**line = '\0';
 		return (0);
 	}
-	*line = my_substr_free(*buf, 0, nl, 0);
-	*buf = my_substr_free(*buf, nl + 1, BUFFER_SIZE, 1);
+	*line = my_substr_free(*buf, 0, nl, DONTFREE);
+	*buf = my_substr_free(*buf, nl + 1, BUFFER_SIZE, DOFREE);
 	if (!*line || !*buf)
 		return (-1);
 	return (1);
@@ -43,7 +50,7 @@ int		extractline(char **buf, char **line, size_t nl, size_t len)
 
 int		get_next_line(int fd, char **line)
 {
-	static char	*permbuf[OPEN_MAX];
+	static char	*permbuf[10000];
 	char		tmpbuf[BUFFER_SIZE + 1];
 	size_t		len;
 	size_t		nl;
@@ -55,7 +62,7 @@ int		get_next_line(int fd, char **line)
 			(len = read(fd, tmpbuf, BUFFER_SIZE)))
 	{
 		tmpbuf[len] = '\0';
-		permbuf[fd] = my_strjoin_free(permbuf[fd], tmpbuf, 1, 0);
+		permbuf[fd] = join_free(permbuf[fd], tmpbuf, DOFREE, DONTFREE);
 		if (!permbuf[fd])
 			return (-1);
 	}

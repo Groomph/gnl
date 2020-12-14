@@ -6,7 +6,7 @@
 /*   By: romain <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 06:34:11 by romain            #+#    #+#             */
-/*   Updated: 2020/11/12 10:26:33 by romain           ###   ########.fr       */
+/*   Updated: 2020/12/14 20:34:41 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*my_substr_free(char *str, size_t start, size_t len, int freestr)
 	return (temp);
 }
 
-char	*my_strjoin_free(char *str1, char *str2, int freestr1, int freestr2)
+char	*join_free(char *str1, char *str2, int freestr1, int freestr2)
 {
 	size_t	i;
 	size_t	i2;
