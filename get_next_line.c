@@ -6,7 +6,7 @@
 /*   By: romain <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 06:34:11 by romain            #+#    #+#             */
-/*   Updated: 2020/12/14 20:40:29 by romain           ###   ########.fr       */
+/*   Updated: 2020/12/14 21:19:18 by rsanchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ int		extractline(char **buf, char **line, size_t nl, size_t len)
 		**line = '\0';
 		return (0);
 	}
-	*line = my_substr_free(*buf, 0, nl, DONTFREE);
-	*buf = my_substr_free(*buf, nl + 1, BUFFER_SIZE, DOFREE);
+	*line = substr_free(*buf, 0, nl, DONTFREE);
+	*buf = substr_free(*buf, nl + 1, BUFFER_SIZE, DOFREE);
 	if (!*line || !*buf)
 		return (-1);
 	return (1);

@@ -6,13 +6,13 @@
 /*   By: romain <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 06:34:11 by romain            #+#    #+#             */
-/*   Updated: 2020/12/14 20:35:39 by romain           ###   ########.fr       */
+/*   Updated: 2020/12/14 21:18:15 by rsanchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*my_substr_free(char *str, size_t start, size_t len, int freestr)
+char	*substr_free(char *str, size_t start, size_t len, int freestr)
 {
 	size_t	i;
 	char	*temp;
