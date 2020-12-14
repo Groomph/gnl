@@ -6,7 +6,7 @@
 /*   By: romain <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 06:34:11 by romain            #+#    #+#             */
-/*   Updated: 2020/12/14 20:41:12 by romain           ###   ########.fr       */
+/*   Updated: 2020/12/14 20:49:30 by rsanchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,10 @@ int		extractline(char **buf, char **line, size_t nl, size_t len)
 			*buf = NULL;
 			return (0);
 		}
-      		if (!(*line = malloc(1)))
-                        return (-1);
-                **line = '\0';
-                return (0);
-
+		if (!(*line = malloc(1)))
+			return (-1);
+		**line = '\0';
+		return (0);
 	}
 	*line = substr_free(*buf, 0, nl, DONTFREE);
 	*buf = substr_free(*buf, nl + 1, BUFFER_SIZE, DOFREE);

@@ -6,7 +6,7 @@
 /*   By: romain <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 07:16:41 by romain            #+#    #+#             */
-/*   Updated: 2020/12/14 20:40:45 by romain           ###   ########.fr       */
+/*   Updated: 2020/12/14 20:54:03 by rsanchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-/*# include <limits.h>*/
+# include <limits.h>
 
 # define DOFREE 1
 # define DONTFREE 0
