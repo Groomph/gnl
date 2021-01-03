@@ -6,7 +6,7 @@
 /*   By: rsanchez <rsanchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 14:48:15 by rsanchez          #+#    #+#             */
-/*   Updated: 2020/12/15 14:48:18 by rsanchez         ###   ########.fr       */
+/*   Updated: 2021/01/04 00:03:57 by rsanchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		extractline(char **buf, char **line, size_t nl, size_t len)
 			*buf = NULL;
 			return (0);
 		}
-		if (!(*line = malloc(1)))
+		if (!(*line = malloc(sizeof(char))))
 			return (-1);
 		**line = '\0';
 		return (0);
@@ -51,11 +51,13 @@ int		extractline(char **buf, char **line, size_t nl, size_t len)
 int		get_next_line(int fd, char **line)
 {
 	static char	*permbuf[10000];
-	char		tmpbuf[BUFFER_SIZE + 1];
+	char		*tmpbuf;
 	size_t		len;
 	size_t		nl;
 
 	if (fd < 0 || read(fd, 0, 0) < 0 || !line || BUFFER_SIZE < 1)
+		return (-1);
+	if (!(tmpbuf = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
 	len = 1;
 	while ((nl = isnl(permbuf[fd])) == 0 &&
@@ -63,8 +65,12 @@ int		get_next_line(int fd, char **line)
 	{
 		tmpbuf[len] = '\0';
 		permbuf[fd] = join_free(permbuf[fd], tmpbuf, DOFREE, DONTFREE);
-		if (!permbuf[fd])
+		if (!(permbuf[fd]))
+		{
+			free(tmpbuf);
 			return (-1);
+		}
 	}
-	return (extractline(&permbuf[fd], line, nl - 1, len));
+	free(tmpbuf);
+	return (extractline(&(permbuf[fd]), line, nl - 1, len));
 }
