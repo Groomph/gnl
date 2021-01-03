@@ -6,7 +6,7 @@
 /*   By: rsanchez <rsanchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 14:48:31 by rsanchez          #+#    #+#             */
-/*   Updated: 2020/12/15 14:48:33 by rsanchez         ###   ########.fr       */
+/*   Updated: 2021/01/03 19:26:59 by rsanchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <limits.h>
 
 # define DOFREE 1
 # define DONTFREE 0
